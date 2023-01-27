@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+<html>
+    <head>
+        {% block tittle %}
+        {% endblock %}
+        <link rel="stylesheet" href="{% static 'with.css' %}">
+    </head>
+    <body>
+        {% block main %}
+        <div class="container common">
+            <div class="header_img">
+                <img src="static/images/background.jpg">
+            </div>
+            <div class="container_service">
+                <h2>イチ押し駅！！</h2>
+                <div class="service_block">
+                    <div class="service">
+                        <img src="static/images/kichista.jpg" alt="--------">
+                        <div class="ttl">吉祥寺</div>
+                        <div class="explain">ここにテキストが入ります。</div>
+                        <a href="kichi/">続きはこちら</a>
+                    </div>
+                    <div class="service">
+                        <img src="static/images/kansta.jpg" alt="--------">
+                        <div class="ttl">神田</div>
+                        <div class="explain">ここにテキストが入ります。</div>
+                        <a href="kanda/">続きはこちら</a>
+                    </div>
+                    <div class="service">
+                        <img src="static/images/tosta.jpg" alt="--------">
+                        <div class="ttl">東京</div>
+                        <div class="explain">ここにテキストが入ります。</div>
+                        <a href="tokyo/">続きはこちら</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>タイムライン</h2>
+        <div class="card mb-5 text-left">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="{% if user.thumbnail %}{{ user.thumbnail.url }}{% else %}{% static 'images/no_photo.png' %}{% endif %}" class="rounded-circle post-photo">
+                    </div>
+                    <div class="col-10">
+                        <form method="post" action="{% url 'first_app:create' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  name="text" rows="3" placeholder="例：XX駅の〇〇がおいしかった。"></textarea>
+                            </div>
+                            <div class="form-group mt-1">
+                                <label for="file">画像アップロード</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+                            </div>
+                            <button class="btn btn-info btn-block" type="submit">ほめる</button>
+                            <button class="btn btn-info btn-block" type="submit">投稿</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% for post in object_list %}
+        <div class="card mb-5 text-left">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-1">
+                <a href="{% url 'accounts:detail' post.author.id %}"><img src="{% if post.author.thumbnail %}{{ post.author.thumbnail.url }}{% else %}{% static 'images/no_photo.png' %}{% endif %}" class="rounded-circle profile-post-photo"></a>
+              </div>
+              <div class="col-10 ml-3">
+                <a href="{% url 'accounts:detail' post.author.id %}" class="text-secondary">{{ post.author }}</a><br>
+                <small class="text-muted">{{ post.created_at | date:"n月j日 H時i分" }}</small>
+              </div>
+            </div>
+            <p class="card-text mt-2">{{ post.text | linebreaks }}</p>
+          </div>
+          {% if post.post_photo %}
+          <img class="card-img-bottom" src="{{ post.post_photo.url }}" alt="Card image cap">
+          {% endif %}
+          </div>
+          {% endfor %}
+
+          <nav>
+            <ul class="pagination justify-content-center">
+              {% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link text-info" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">&laquo;</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link">
+                &laquo;</span></a>
+                </li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
+                  <li class="page-item disabled"><span class="page-link">{{ i }}</span></li>
+                {% else %}
+                  <li class="page-item"><a class="page-link text-info" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a class="page-link text-info" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <span class="page-link">&raquo;</span>
+                  </li>
+                {% endif %}
+                </ul>
+              </nav>
+        {% endblock %}
+    </body>
+</html>

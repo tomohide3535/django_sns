@@ -1,0 +1,4 @@
+<form action="{% url 'first_app:follow' place.pk %}" method="post">
+    <button type="submit" name="button">お気に入り追加</button>
+    {% csrf_token %}
+</form>

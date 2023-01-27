@@ -1,0 +1,81 @@
+<!--
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <meta http-equiv="X-UA-Compatible" contens="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block tittle %}{% endblock %}</title>
+        <meta name="description" content="">
+        
+    </head>
+    <body>
+        <div class="header common">
+            <h1>{% block subtittle %}{% endblock %}</h1>
+            <a class="navbar-brand" href="{% url 'timeline:index' %}">POSII</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'first_app:index' %}">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:edit' %}">プロフィール</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">ユーザー登録</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <ul2>
+                 <li><a href="/tachikawa">立川</a></li>
+                 <li><a href="/kokubun">国分寺</a></li>
+                 <li><a href="/kichi">吉祥寺</a></li>
+                 <li><a href="/nishiogi">西荻窪</a></li>
+                 <li><a href="/ogi">荻窪</a></li>
+                 <li><a href="/asagaya">阿佐ヶ谷</a></li>
+                 <li><a href="/kouenzi">高円寺</a></li>
+                 <li><a href="/nakano">中野</a></li>
+                 <li><a href="/shinjuku">新宿</a></li>
+                 <li><a href="/kanda">神田</a></li>
+                 <li><a href="/tokyo">東京</a></li></li>
+             </ul2>
+        </div>
+        <main role="main" class="container">
+            <div class="starter-template">
+                {% if messages %}
+                <div class="w-100">
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                            {{ message }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% block main %}{% endblock %}
+            </div>
+        </main>
+        <div class="footer">
+            <div class="pp_link" common>
+                <a href="">個人情報保護方針</a>
+            </div>
+            <div class="copy">
+                &copy;2022
+            </div>
+        </div>
+    </body>
+</html>-->

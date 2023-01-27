@@ -1,0 +1,149 @@
+/*タイトル*/
+h1{
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: #333;
+    
+}
+
+
+
+body{
+    font-family: 'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;
+    font-size: 15px;
+    border-top: 50px solid #79a1b1;
+}
+
+.common{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header ul{
+    display: flex;
+    padding-left: 0;
+}
+
+.header ul li{
+    width: 100px;
+    text-align: center;
+    list-style: none;
+    border-right: 1px solid #ddd;
+    
+}
+.header ul li:first-child{
+    border-left: 1px solid #ddd;
+}
+
+.header ul li a{
+    display: block;
+}
+
+.header_img{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header_img img{
+    display: inline-block;
+    width: 1200px;
+    margin: 0 auto;
+}
+.container_service{
+    display: inline-block;
+    
+}
+.container_service .service_block{
+    display: flex;
+    justify-content: space-between;
+}
+.container_service .service{
+    width: 400px;
+    text-align: center;
+    
+}
+.container_service h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.container_service .service img{
+    margin-bottom: 20px;
+    width: 390px;
+    height:280px;
+}
+.container_service .service .ttl{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.container_service .service .explain{
+    margin-bottom: 20px;
+}
+.container_service .service a{
+    background: #79a1b1;
+    color: #fff;
+    padding: 15px 20px 12px;
+}
+.pp_link{
+    text-align: right;
+}
+.footer{
+    margin-top: 40px;
+    margin-bottom: 7px;
+}
+.copy{
+    text-align: center;
+    background: #79a1b1;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 0 3px;
+}
+
+body {
+  padding-top: 5rem;
+}
+
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  max-width: 536px;
+  margin: auto;
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+}
+
+.post-photo {
+  width: 30px;
+  height: 30px;
+}
+
+.form-content {
+  max-width: 330px;
+  margin: auto;
+}
+
+.form-group label {
+  display: none;
+}
+
+.form-group .form-check label {
+  display: inline-block;
+}
+
+.form-group {
+  word-break: break-all;
+}
+
+.profile-post-photo {
+  width: 50px;
+  height: 50px;
+}
